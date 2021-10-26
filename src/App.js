@@ -1,13 +1,18 @@
-import { Box } from '@material-ui/core';
+import React from 'react';
+import { Box, createTheme, ThemeProvider } from '@material-ui/core';
 import Dashboard from './components/Dashboard';
 import Navbar from './components/Navbar';
 
+const theme = createTheme({});
+
 function App() {
   return (
-    <Box>
-      <Navbar />
-      <Dashboard />
-    </Box>
+    <ThemeProvider theme={theme}>
+      <Box bgcolor="#f8f9fc">
+        <Navbar />
+        <Dashboard />
+      </Box>
+    </ThemeProvider>
   );
 }
 

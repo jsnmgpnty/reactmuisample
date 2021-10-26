@@ -1,4 +1,4 @@
-import { Box, Typography } from '@material-ui/core';
+import { Box, Hidden, Typography } from '@material-ui/core';
 import { Help } from '@material-ui/icons';
 import React from 'react';
 
@@ -8,48 +8,46 @@ const LINKS = [
   { label: 'Planner', url: '' },
   { label: 'School Data', url: '' },
   { label: 'Library', url: '' },
-]
+];
 
-function Navbar() {
-  return (
-    <Box display="flex" alignItems="center" justifyContent="space-between" bgcolor="#0f2551" color="white" p={2}>
-      <Box display="flex" alignItems="center" >
-        <Box
-          component="img"
-          src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png"
-          alt=""
-          mr={2}
-          p={1}
-          width={120}
-          borderRight="1px solid white"
-        />
-        {LINKS.map((link, i) => (
-          <Box
-            component="a"
-            href={link.url}
-            key={i}
-            mr={2}
-          >
-            <Box
-              variant="h5"
-              color="white"
-              component={Typography}
-            >
-              {link.label}
+const Navbar = () => (
+  <Box
+    display="flex"
+    alignItems="center"
+    justifyContent="space-between"
+    bgcolor="#0f2551"
+    color="white"
+    p={2}
+  >
+    <Box display="flex" alignItems="center">
+      <Box
+        component="img"
+        src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png"
+        alt=""
+        mr={2}
+        p={1}
+        width={120}
+        borderRight="1px solid white"
+      />
+      <Hidden smDown implementation="css">
+        <Box display="flex" alignItems="center">
+          {LINKS.map((link, i) => (
+            <Box component="a" href={link.url} key={i} mr={2}>
+              <Box variant="h5" color="white" component={Typography}>
+                {link.label}
+              </Box>
             </Box>
-          </Box>
-        ))}
-      </Box>
+          ))}
+        </Box>
+      </Hidden>
+    </Box>
+    <Hidden smDown implementation="css">
       <Box display="flex" alignItems="center">
         <Box component={Help} mr={2} />
         <Box display="flex">
           <Box mr={2}>
-            <Typography variant="body1">
-              Jasmine Flynn
-            </Typography>
-            <Typography variant="body2">
-              Teacher Account
-            </Typography>
+            <Typography variant="body1">Jasmine Flynn</Typography>
+            <Typography variant="body2">Teacher Account</Typography>
           </Box>
           <Box
             bgcolor="#8869f1"
@@ -63,8 +61,8 @@ function Navbar() {
           </Box>
         </Box>
       </Box>
-    </Box>
-  )
-}
+    </Hidden>
+  </Box>
+);
 
 export default Navbar;
